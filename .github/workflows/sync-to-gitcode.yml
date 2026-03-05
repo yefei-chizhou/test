@@ -26,7 +26,7 @@ jobs:
         run: |
           # 使用 HTTPS 推送（需 GitCode 账号 token）
           echo "gitcode token ${{ secrets.GITHUB_TOKEN }}"
-          git remote add gitcode https://jc7ig54qtnqH4ZjNmT42vFgs@gitcode.com/strawberrycake/test.git
+          git remote add gitcode https://strawberrycake:jc7ig54qtnqH4ZjNmT42vFgs@gitcode.com/strawberrycake/test.git
           git push gitcode main
         env:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
