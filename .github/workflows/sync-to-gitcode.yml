@@ -1,0 +1,31 @@
+name: Sync to GitCode
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Push to GitCode
+        run: |
+          # 使用 HTTPS 推送（需 GitCode 账号 token）
+          git remote add gitcode https://$GITEE_TOKEN@gitee.com/your-username/my-awesome-project.git
+          git push gitcode main
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
