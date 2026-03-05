@@ -26,6 +26,6 @@ jobs:
         run: |
           # 使用 HTTPS 推送（需 GitCode 账号 token）
           git remote add gitcode https://$GITEE_TOKEN@gitcode.com/strawberrycake/test.git
-          git push gitcode master
+          git push gitcode main
         env:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
