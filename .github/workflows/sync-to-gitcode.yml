@@ -17,6 +17,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
+      - name: Pull changes
+        run: |
+          git fetch origin
+          git merge origin/main --ff-only || git merge origin/main  
       - name: Set up Git
         run: |
           git config --local user.email "action@github.com"
